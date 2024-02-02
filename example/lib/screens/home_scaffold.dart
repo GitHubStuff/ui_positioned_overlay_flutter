@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 
 import '../gen/assets.gen.dart';
 
-import 'package:package_template/package_template.dart';
+import 'package:ui_positioned_overlay_flutter/ui_positioned_overlay_flutter.dart';
+
+final GlobalKey _key = GlobalKey();
 
 class HomeScaffold extends StatelessWidget {
   const HomeScaffold({super.key});
@@ -18,15 +20,12 @@ class HomeScaffold extends StatelessWidget {
   }
 
   Widget homeWidget(BuildContext context) {
-    //TODO: Replace with your own code
-    // ignore: non_constant_identifier_names
-    final PackageTemplate package_template = PackageTemplate();
-    debugPrint('$package_template');
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SizedBox(
+            key: _key,
             width: 200,
             height: 200,
             child: Padding(
@@ -34,8 +33,43 @@ class HomeScaffold extends StatelessWidget {
               child: Assets.images.ltmm1024x1024.image(),
             ),
           ),
+          ElevatedButton(
+            onPressed: () async {
+              final result =
+                  await Navigator.of(context).push(_createOverlayRoute<int?>());
+              debugPrint('Resulter: $result');
+            },
+            child: const Text('Show New Overlay'),
+          ),
         ],
       ),
+    );
+  }
+
+  PageRouteBuilder _createOverlayRoute<T>() {
+    return PageRouteBuilder(
+      opaque: false,
+      pageBuilder: (context, _, __) {
+        return PositionedOverlayWidget<T>(
+          triggerKey: _key,
+          offset: const Offset(10, -10),
+          builder: (context, dismiss) {
+            return SizedBox(
+              width: 200,
+              height: 100,
+              child: Card(
+                child: Center(
+                  child: GestureDetector(
+                      onTap: () {
+                        dismiss(11);
+                      },
+                      child: const Text('Overlay Content')),
+                ),
+              ),
+            );
+          },
+        );
+      },
     );
   }
 }

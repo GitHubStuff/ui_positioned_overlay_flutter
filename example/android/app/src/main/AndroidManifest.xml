@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="reverse.domain.bundleSuffix">
+    package="com.icodeforyou.ui_positioned_overlay_flutter">
    <application
-        android:label="MyAppName"
+        android:label="Positioned Overlay Demo App"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity

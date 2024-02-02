@@ -1,6 +1,6 @@
 {
-    "name": "bundleSuffix",
-    "short_name": "bundleSuffix",
+    "name": "ui_positioned_overlay_flutter",
+    "short_name": "ui_positioned_overlay_flutter",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

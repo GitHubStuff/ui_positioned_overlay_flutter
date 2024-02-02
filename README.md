@@ -1,8 +1,4 @@
-# SETUP
-
-- Find/Replace `package_template` to name of the name of the package (ex: `flutter_rocks`)
-- Addess the *TODO:* in the **/example** folder by adding code from the package
-- If needed/wanted follow the instructions in the **/example/README.md** to have the example app more reflective of your package and show off features of widget packages.
+# Intro
 
 <!--
 The comments below are from the Flutter/Dart package generation. Feel free to use or ignore
@@ -21,29 +17,44 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+This package takes 'key'ed widget (a global key), and can place a child widget overlayed and positioned on/near the parent widget.
 
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+The area around the child is tappable and will dismiss the child (returning null), the child can also dismiss the over and return a value.
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Install in **pubspec.yaml**
+
+```yaml
+dependencies:
+  ui_positioned_overlay_flutter:
+    git: https://github.com/GitHubStuff/ui_positioned_overlay_flutter.git
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+See **/example** folder for a detailed example including use of *GlobalKey*
+
+## Widget Declaration
 
 ```dart
-const like = 'sample';
+class PositionedOverlayWidget<T> extends StatefulWidget {
+  final GlobalKey triggerKey;
+  final Offset offset;
+  final Color backgroundColor;
+  final double opacity;
+  final Widget Function(
+      BuildContext context, void Function([dynamic result]) dismiss) builder;
+  const PositionedOverlayWidget({
+    super.key,
+    required this.triggerKey,
+    this.offset = const Offset(0, 0),
+    this.backgroundColor = Colors.black,
+    this.opacity = 0.2,
+    required this.builder,
+  });
 ```
 
-## Additional information
+## Finally
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+Be kind to each other!

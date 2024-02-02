@@ -1,4 +1,4 @@
-name: app_template
+name: positioned_overlay_demo
 description: A new Flutter template.
 
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
@@ -15,8 +15,8 @@ dependencies:
   ##app_settings: ^5.1.1 # A Flutter plugin for opening iOS and Android phone settings from an app.
   ##cupertino_icons: ^1.0.6 # This is an asset repo for Cupertino widgets.
   flutter_modular: ^6.3.2 # Smart project structure with dependency injection and route management
-  package_template:
-    path: ../../package_template
+  ui_positioned_overlay_flutter:
+    path: ../../ui_positioned_overlay_flutter
 
 # dart run build_runner build -d
 dev_dependencies:
