@@ -35,6 +35,10 @@ dependencies:
 
 See **/example** folder for a detailed example including use of *GlobalKey*
 
+***NOTE:***
+
+Use of this widget required creating a **PageRouteBuilder**. The example shows the requiremens and fields to add the positioning widget to the widget-true at the correct position.
+
 ## Widget Declaration
 
 ```dart
