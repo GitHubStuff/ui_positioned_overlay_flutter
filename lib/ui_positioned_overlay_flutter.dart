@@ -6,6 +6,7 @@ class PositionedOverlayWidget<T> extends StatefulWidget {
   final GlobalKey triggerKey;
   final Offset offset;
   final Color backgroundColor;
+  final Duration popDelay;
   final double opacity;
   final Widget Function(
       BuildContext context, void Function([dynamic result]) dismiss) builder;
@@ -14,6 +15,7 @@ class PositionedOverlayWidget<T> extends StatefulWidget {
     required this.triggerKey,
     this.offset = const Offset(0, 0),
     this.backgroundColor = Colors.black,
+    this.popDelay = const Duration(milliseconds: 5),
     this.opacity = 0.2,
     required this.builder,
   });
@@ -50,9 +52,11 @@ class _PositionedOverlayWidget<T> extends State<PositionedOverlayWidget<T>> {
   }
 
   void _pop([dynamic result]) {
-    _overlayEntry?.remove();
-    debugPrint('Result: $result');
-    Navigator.of(context).pop(result as T);
+    Future.delayed(widget.popDelay, () {
+      _overlayEntry?.remove();
+      debugPrint('Result: $result');
+      Navigator.of(context).pop(result as T);
+    });
   }
 
   void _updatePosition(_) {
