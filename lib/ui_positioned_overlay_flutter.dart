@@ -10,6 +10,7 @@ class PositionedOverlayWidget<T> extends StatefulWidget {
   final double opacity;
   final Widget Function(
       BuildContext context, void Function([dynamic result]) dismiss) builder;
+
   const PositionedOverlayWidget({
     super.key,
     required this.triggerKey,
@@ -54,8 +55,7 @@ class _PositionedOverlayWidget<T> extends State<PositionedOverlayWidget<T>> {
   void _pop([dynamic result]) {
     Future.delayed(widget.popDelay, () {
       _overlayEntry?.remove();
-      debugPrint('Result: $result');
-      Navigator.of(context).pop(result as T);
+      Navigator.of(context).pop(result == null ? null : result as T);
     });
   }
 
