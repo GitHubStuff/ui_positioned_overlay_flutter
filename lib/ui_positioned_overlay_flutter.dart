@@ -1,12 +1,13 @@
 library ui_positioned_overlay_flutter;
 
 import 'package:flutter/material.dart';
+import 'package:ui_animated_opacity/ui_animated_opacity.dart';
 
 class PositionedOverlayWidget<T> extends StatefulWidget {
+  final UIOpacityCubit? opacityCubit;
   final GlobalKey triggerKey;
   final Offset offset;
   final Color backgroundColor;
-  final Duration popDelay;
   final double opacity;
   final Widget Function(
       BuildContext context, void Function([dynamic result]) dismiss) builder;
@@ -14,9 +15,9 @@ class PositionedOverlayWidget<T> extends StatefulWidget {
   const PositionedOverlayWidget({
     super.key,
     required this.triggerKey,
+    this.opacityCubit,
     this.offset = const Offset(0, 0),
     this.backgroundColor = Colors.black,
-    this.popDelay = const Duration(milliseconds: 5),
     this.opacity = 0.2,
     required this.builder,
   });
@@ -53,7 +54,12 @@ class _PositionedOverlayWidget<T> extends State<PositionedOverlayWidget<T>> {
   }
 
   void _pop([dynamic result]) {
-    Future.delayed(widget.popDelay, () {
+    Duration popDelay = const Duration();
+    if (widget.opacityCubit != null) {
+      popDelay = widget.opacityCubit!.fadeDuration;
+      widget.opacityCubit!.hide();
+    }
+    Future.delayed(popDelay, () {
       _overlayEntry?.remove();
       Navigator.of(context).pop(result == null ? null : result as T);
     });

@@ -1,6 +1,6 @@
 name: ui_positioned_overlay_flutter
 description: "A new Flutter package project."
-version: 0.0.2+1
+version: 0.0.3
 home_page: http://www.icodeforyou.com
 publish_to: none # Remove this line if you wish to publish to pub.dev
 
@@ -11,6 +11,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_bloc: ^8.1.3 # A Flutter package that helps implement the BLoC (Business Logic Component) design pattern.
+  ui_animated_opacity:
+    git: https://github.com/GitHubStuff/ui_animated_opacity.git
 
 dev_dependencies:
   flutter_test:
