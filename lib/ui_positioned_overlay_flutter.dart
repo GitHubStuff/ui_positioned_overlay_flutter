@@ -43,6 +43,7 @@ class _PositionedOverlayWidget<T> extends State<PositionedOverlayWidget<T>>
     );
     controller.addStatusListener((status) {
       if (AnimationStatus.dismissed == status) {
+        overlayEntry?.remove();
         Navigator.of(context)
             .pop(poppedResult == null ? null : poppedResult as T);
       }
