@@ -2,7 +2,7 @@ library ui_positioned_overlay_flutter;
 
 import 'package:flutter/material.dart';
 
-class PositionedOverlayWidget<T> extends StatefulWidget {
+class UIPositionedOverlayWidget<T> extends StatefulWidget {
   final GlobalKey? triggerKey; // Make triggerKey nullable
   final Color backgroundColor;
   final double layerOpacity;
@@ -13,7 +13,7 @@ class PositionedOverlayWidget<T> extends StatefulWidget {
   final Widget Function(
       BuildContext context, void Function([dynamic result]) dismiss) builder;
 
-  const PositionedOverlayWidget({
+  const UIPositionedOverlayWidget({
     super.key,
     this.triggerKey, // triggerKey is now nullable
     this.dx, // Initialize dx
@@ -27,11 +27,11 @@ class PositionedOverlayWidget<T> extends StatefulWidget {
             "Either triggerKey or both dx and dy must be provided.");
 
   @override
-  State<PositionedOverlayWidget<T>> createState() =>
-      _PositionedOverlayWidget<T>();
+  State<UIPositionedOverlayWidget<T>> createState() =>
+      _UIPositionedOverlayWidget<T>();
 }
 
-class _PositionedOverlayWidget<T> extends State<PositionedOverlayWidget<T>>
+class _UIPositionedOverlayWidget<T> extends State<UIPositionedOverlayWidget<T>>
     with TickerProviderStateMixin {
   OverlayEntry? overlayEntry;
   late final AnimationController controller;
