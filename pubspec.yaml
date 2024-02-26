@@ -1,6 +1,6 @@
 name: ui_positioned_overlay_flutter
-description: "A new Flutter package project."
-version: 0.1.2+1
+description: "A Flutter package for creating an overlay widget that can be positioned over another widget."
+version: 0.1.2+2
 home_page: http://www.icodeforyou.com
 publish_to: none # Remove this line if you wish to publish to pub.dev
 
@@ -11,7 +11,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.1.4 # A Flutter package that helps implement the BLoC (Business Logic Component) design pattern.
 
 dev_dependencies:
   flutter_test:
